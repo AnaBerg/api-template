@@ -1,0 +1,36 @@
+{
+  "name": "jwt-api",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsnd --transpile-only --ignore-watch node_modules --respawn src/index.ts",
+    "run-migrations": "knex migrate:latest",
+    "run-seeds": "knex seed:run",
+    "rollback-migrations": "knex migrate:rollback"
+  },
+  "devDependencies": {
+    "@types/cors": "2.8.8",
+    "@types/express": "4.17.8",
+    "@types/faker": "^5.5.8",
+    "@types/jest": "^27.0.1",
+    "@types/jwt-simple": "^0.5.33",
+    "dotenv": "^16.0.1",
+    "jest": "^27.2.0",
+    "pg": "^8.7.3",
+    "ts-jest": "^27.0.5",
+    "ts-node-dev": "1.0.0",
+    "typescript": "4.0.5"
+  },
+  "dependencies": {
+    "@types/uuid": "^8.3.4",
+    "body-parser": "1.19.0",
+    "cors": "2.8.5",
+    "date-fns": "^2.28.0",
+    "express": "4.17.1",
+    "jwt-simple": "^0.5.6",
+    "knex": "0.21.9",
+    "sqlite3": "5.0.8",
+    "uuid": "^8.3.2"
+  }
+}

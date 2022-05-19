@@ -1,0 +1,11 @@
+export interface ISession {
+  id: string;
+  createdAt: Date;
+  user: string;
+  issued: Date;
+  expires: Date;
+}
+
+export type PartialSession = Omit<ISession, "issued" | "expires">;
+
+export type ExpirationStatus = "expired" | "active" | "grace";
