@@ -15,5 +15,6 @@ routes.post('/auth', sessionController.authentication);
 
 routes.post('/protected/user/register', userController.create);
 routes.get('/protected/users', userController.getAll);
+routes.get('/protected/login', userController.login);
 
 export default routes;

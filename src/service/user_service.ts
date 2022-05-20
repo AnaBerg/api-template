@@ -19,7 +19,7 @@ export default class UserService {
       const user = await db("users").where({ email });
       return user[0];
     } catch (e) {
-      return error(res, "Something went wron while trying to fin the user by e-mail")
+      return error(res, "Something went wron while trying to find the user by e-mail", e as Error)
     }
   }
   async updateUser(res: Response, user: IUser) {
