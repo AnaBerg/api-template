@@ -11,8 +11,9 @@ const sessionController = new SessionController();
 const testController = new TestController();
 
 routes.get('/', testController.test);
+routes.post('/auth', sessionController.authentication);
+
 routes.post('/protected/user/register', userController.create);
 routes.get('/protected/users', userController.getAll);
-routes.post('/logIn', sessionController.logIn);
 
 export default routes;

@@ -9,7 +9,7 @@ import UserService from "../service/user_service";
 const userService = new UserService;
 
 export default class SessionController {
-  async logIn(req: Request, res: Response) {
+  async authentication(req: Request, res: Response) {
     const secretKey = process.env.TOKEN_KEY as string;
     const createdAt = new Date();
     const { user } = req.body;
