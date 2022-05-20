@@ -2,6 +2,7 @@ export interface ISession {
   id: string;
   createdAt: Date;
   user: string;
+  type: string;
   issued: Date;
   expires: Date;
 }

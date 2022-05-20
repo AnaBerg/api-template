@@ -1,15 +1,14 @@
-import { isBefore, add, isAfter } from "date-fns";
+import { isBefore, add } from "date-fns";
 import { ExpirationStatus, ISession } from "../entities/common/session";
 
-const expirationCheckStatus = (token: ISession): ExpirationStatus => {
-  const now = new Date() as Date;
-  const threeHoursAfter = add(token.expires, { hours: 3 }) as Date;
+const expirationCheckStatus = (session: ISession): ExpirationStatus => {
+  const now: Date = new Date();
+  const expires: Date = new Date(session.expires);
+  const threeHoursAfter: Date = add(expires, { hours: 3 });
 
-  console.log(isBefore(now, token.expires));
-
-  if (isBefore(now, token.expires)) {
+  if (isBefore(now, expires)) {
     return "active";
-  } else if (isAfter(now, threeHoursAfter)) {
+  } else if (isBefore(threeHoursAfter, now)) {
     return "grace";
   } else {
     return "expired";

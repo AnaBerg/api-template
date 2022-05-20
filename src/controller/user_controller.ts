@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { v4 as uuid } from 'uuid';
 
 import db from '../database/db';
-import defaultError from '../helpers/deafult_error';
+import error from '../helpers/error';
 
 import { IUserPost } from '../entities/user';
 
@@ -12,8 +12,8 @@ export default class UserController {
     try {
       const users = await db("users");
       return res.status(200).json(users);
-    } catch (error) {
-      return defaultError(res, 'getAll users', error as Error);
+    } catch (e) {
+      return error(res, 'Somethin went wrong while getting all users', e as Error);
     }
     
   }
@@ -38,13 +38,10 @@ export default class UserController {
         message: "User created successfully",
         user: newUser
       })
-    } catch (error) {
+    } catch (e) {
       await transaction.rollback();
 
-      return res.status(400).json({
-        message: "An error occured while creating the user",
-        error
-      })
+      return error(res, "Something went wrong while creating new user", e as Error);
     }
   }
 }

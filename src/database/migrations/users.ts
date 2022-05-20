@@ -6,7 +6,7 @@ export const up = (knex: Knex) => knex.schema.createTable("users", (table) => {
   table.string("email").notNullable().unique();
   table.string("password").notNullable();
   table.string("type").notNullable();
-  table.string("token");
+  table.text("token");
   table.timestamp("created_at").defaultTo(knex.fn.now());
   table.timestamp("update_at").defaultTo(knex.fn.now());
 });
